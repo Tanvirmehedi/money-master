@@ -3,11 +3,35 @@ document
   .getElementById("calculate-button")
   .addEventListener("click", function () {
     calculateBalance();
+    getInputValue("income-input-box");
   });
 
+//   Savings Button Click
 document.getElementById("saving-button").addEventListener("click", function () {
-  console.log(getInputValue("saving-input-box"));
+  getRemainingBalance();
 });
+
+// GET SAVING
+function calculateSaving() {
+  const monthlyIncome = getInputValue("income-input-box");
+  const parentageValue = getInputValue("saving-input-box");
+  const parentage = (monthlyIncome * parentageValue) / 100;
+  if (parentage <= calculateBalance()) {
+    getDisplayOutput("saving-amount", parentage);
+    return parentage;
+  } else {
+    errorMessage("Insufficient Balance To save !!");
+  }
+}
+
+// GET REMAINING BALANCE
+
+function getRemainingBalance() {
+  const balance = calculateBalance();
+  const saving = calculateSaving();
+  const remainingBalance = balance - saving;
+  getDisplayOutput("remaining-balance", remainingBalance);
+}
 
 //   HANDLE INPUT FIELD
 function getInputValue(id) {
@@ -15,10 +39,9 @@ function getInputValue(id) {
   const inputFieldValue = inputField.value;
   if (inputFieldValue >= 0 && inputFieldValue != "") {
     const inputTextConvert = parseFloat(inputFieldValue);
-    inputField.value = "";
     return inputTextConvert;
   } else {
-    errorMessage("SomeThing Wrong ");
+    errorMessage("SomeThing Wrong in==", id);
     inputField.value = "";
   }
 }
@@ -41,6 +64,7 @@ function calculateBalance() {
   if (monthlyIncome >= totalExpense) {
     const balance = monthlyIncome - totalExpense;
     getDisplayOutput("display-balance", balance);
+    return balance;
   } else {
     errorMessage("Your Expense Is To High Control Your Self");
   }
@@ -51,13 +75,14 @@ function getDisplayOutput(id, returnValue) {
   const displayId = document.getElementById(id);
   if (isNaN(returnValue) != true) {
     displayId.innerText = returnValue;
-  } else {
-    errorMessage("Value Empty");
   }
 }
 
 // ERROR HANDLING
 
 function errorMessage(text) {
-  alert(text);
+  const err = document.getElementById("error");
+  err.style.display = "block";
+  err.classList.remove = "hidden";
+  err.innerText = text;
 }
