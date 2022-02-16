@@ -5,11 +5,161 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hisab-Nikas</title>
+    <link rel="shortcut icon" href="./img/bitcoin.png" type="image/x-icon" />
+    <!-- Fab Icon Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Cdn -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Custom Css  -->
   </head>
   <body>
-    <h1 class="text-6xl">Hisab Nikas</h1>
+    <header>
+      <nav class="bg-green-200 py-1">
+        <div class="container">
+          <h1 class="text-4xl text-center font-bold text-slate-700">
+            <span class="shadow-sm">Hisab-Nikas</span>
+            <span class="rounded-full shadow-md"
+              ><i class="fa-brands fa-bitcoin text-slate-700"></i
+            ></span>
+          </h1>
+        </div>
+      </nav>
+    </header>
+    <!-- END OF NAV AND HEADER -->
+
+    <main class="container mx-auto">
+      <section id="hero">
+        <div class="container grid grid-cols-3">
+          <div
+            class="col-span-3 sm:col-span-2 flex justify-center align-middle"
+          >
+            <img src="./img/money.jpg" class="w-4/5" alt="Body-img" />
+          </div>
+          <!-- END OF IMAGE BOX -->
+          <div class="col-span-3 sm:col-span-1">
+            <div
+              class="calculation-box w-4/5 rounded-md bg-green-100 mx-auto py-5 px-6"
+            >
+              <div class="income-box mb-5">
+                <!-- Title -->
+                <h2 class="text-center font-bold text-lg mb-3">
+                  Monthly Income
+                </h2>
+                <div class="grid grid-cols-3">
+                  <span class="col-span-1">Income :</span>
+                  <input
+                    type="text"
+                    placeholder=" Monthly Income"
+                    id="income-input-box"
+                    class="h-8 rounded-md px-2 ml-2 col-span-2"
+                  />
+                </div>
+              </div>
+              <!-- END OF INCOME -->
+              <div class="expense-box">
+                <!-- Title -->
+                <h2 class="text-center font-bold text-lg mb-3">
+                  Monthly Expenses
+                </h2>
+                <!-- Title -->
+
+                <div class="poket-money-box grid grid-cols-3">
+                  <span class="col-span-1">Pocket Money :</span>
+                  <input
+                    type="text"
+                    placeholder=" Monthly Pocket Money"
+                    id="poketMoney-input-box"
+                    class="h-8 rounded-md px-2 ml-2 col-span-2"
+                  />
+                </div>
+                <!-- 1st Box -->
+                <div class="rent-money-box grid grid-cols-3 my-4">
+                  <span class="col-span-1">Home Rent:</span>
+                  <input
+                    type="text"
+                    placeholder=" Monthly Home Rent"
+                    id="homeRent-input-box"
+                    class="h-8 rounded-md px-2 ml-2 col-span-2"
+                  />
+                </div>
+                <!-- 2nd Box -->
+                <div class="food-money-box grid grid-cols-3 my-4">
+                  <span class="col-span-1">Foodstuff:</span>
+                  <input
+                    type="text"
+                    placeholder="Monthly Foodstuff Money"
+                    id="food-input-box"
+                    class="h-8 rounded-md px-2 ml-2 col-span-2"
+                  />
+                </div>
+                <!-- 3rd Box -->
+                <button
+                  id="calculate-button"
+                  class="bg-green-900 text-white px-4 py-1 rounded-md font-semibold"
+                >
+                  Calculate
+                </button>
+                <div class="flex justify-around my-4">
+                  <span class="font-semibold"
+                    >Total Expense:
+                    <span class="font-normal" id="display-total-expence">
+                      909</span
+                    >
+                    /=</span
+                  >
+                  <span class="font-semibold"
+                    >Balance:<span class="font-normal" id="display-balance">
+                      009</span
+                    >
+                    /=</span
+                  >
+                </div>
+              </div>
+              <!-- END OF EXPENSE -->
+              <div class="saving-box my-7">
+                <div class="grid grid-cols-4">
+                  <span class="col-span-1">Saving: </span>
+                  <input
+                    id="saving-input-box"
+                    type="text"
+                    class="col-span-1 rounded-md px-2"
+                    placeholder="parentage"
+                  />
+                  <span class="col-span-1 text-center"> %</span>
+                  <button
+                    id="saving-button"
+                    class="col-span-1 bg-green-900 py-1 rounded-md text-white font-semibold"
+                  >
+                    Save
+                  </button>
+                </div>
+                <!-- START OF BALANCE -->
+                <div class="text-center my-6">
+                  <div class="font-bold mb-4">
+                    Saving Amount: <span class="font-normal">000</span> /=
+                  </div>
+                  <div class="font-bold">
+                    Remaining Balance: <span class="font-normal">000</span> /=
+                  </div>
+                </div>
+              </div>
+              <!-- END OF SAILING  -->
+            </div>
+            <!-- END OF CALCULATION DIV -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Javascript Script -->
     <script src="js/app.js"></script>
   </body>
 </html>
