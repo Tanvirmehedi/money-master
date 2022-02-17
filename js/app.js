@@ -8,6 +8,7 @@ document
     getInputValue("pocketMoney-input-box");
     getInputValue("homeRent-input-box");
     getInputValue("food-input-box");
+
   });
 
 //   Savings Button Click
