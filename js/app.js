@@ -25,9 +25,12 @@ function calculateSaving() {
   if (parentage <= calculateBalance()) {
     getDisplayOutput("saving-amount", parentage);
     return parentage;
-  } else {
-    errorMessage("Insufficient Balance To save !!");
+  } else{
+    errorMessage("Insufficient Balance To save !! Your Monthly Income  Is = ",monthlyIncome);
   }
+    if(monthlyIncome == undefined){
+     getInputValue('income-input-box')
+    }
 }
 
 // GET REMAINING BALANCE
@@ -52,6 +55,20 @@ function getInputValue(id) {
   }
 }
 
+
+// CALCULATE BALANCE AFTER EXPANSE
+function calculateBalance() {
+  const monthlyIncome = getInputValue("income-input-box");
+  const totalExpense = getMonthlyExpenseTotal();
+  const balance = monthlyIncome - totalExpense;
+  if (monthlyIncome >= totalExpense) {
+    getDisplayOutput("display-balance", balance);
+    return balance;
+  } else {
+    errorMessage("Your Expense Is To High Control Your Self!! This Month Your Extra Expanse Is = ", balance);
+  }
+}
+
 // MONTHLY EXPENSE CALCULATION
 
 function getMonthlyExpenseTotal() {
@@ -63,18 +80,6 @@ function getMonthlyExpenseTotal() {
   return totalExpanse;
 }
 
-// CALCULATE BALANCE AFTER EXPANSE
-function calculateBalance() {
-  const monthlyIncome = getInputValue("income-input-box");
-  const totalExpense = getMonthlyExpenseTotal();
-  const balance = monthlyIncome - totalExpense;
-  if (monthlyIncome >= totalExpense) {
-    getDisplayOutput("display-balance", balance);
-    return balance;
-  } else {
-    errorMessage("Your Expense Is To High Control Your Self", balance);
-  }
-}
 
 // DISPLAY RETURNS
 function getDisplayOutput(id, returnValue) {
