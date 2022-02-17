@@ -2,13 +2,19 @@
 document
   .getElementById("calculate-button")
   .addEventListener("click", function () {
+    const err = (document.getElementById("error").style.display = "none");
     calculateBalance();
     getInputValue("income-input-box");
+    getInputValue("pocketMoney-input-box");
+    getInputValue("homeRent-input-box");
+    getInputValue("food-input-box");
   });
 
 //   Savings Button Click
 document.getElementById("saving-button").addEventListener("click", function () {
+  const err = (document.getElementById("error").style.display = "none");
   getRemainingBalance();
+  getInputValue("saving-input-box");
 });
 
 // GET SAVING
@@ -30,7 +36,7 @@ function getRemainingBalance() {
   const balance = calculateBalance();
   const saving = calculateSaving();
   const remainingBalance = balance - saving;
-  getDisplayOutput("remaining-balance", remainingBalance);
+  getDisplayOutput("remaining-balance", remainingBalance.toFixed(2));
 }
 
 //   HANDLE INPUT FIELD
@@ -41,7 +47,7 @@ function getInputValue(id) {
     const inputTextConvert = parseFloat(inputFieldValue);
     return inputTextConvert;
   } else {
-    errorMessage("SomeThing Wrong in==", id);
+    errorMessage("Please Give Valid Number In  = ", id);
     inputField.value = "";
   }
 }
@@ -61,12 +67,12 @@ function getMonthlyExpenseTotal() {
 function calculateBalance() {
   const monthlyIncome = getInputValue("income-input-box");
   const totalExpense = getMonthlyExpenseTotal();
+  const balance = monthlyIncome - totalExpense;
   if (monthlyIncome >= totalExpense) {
-    const balance = monthlyIncome - totalExpense;
     getDisplayOutput("display-balance", balance);
     return balance;
   } else {
-    errorMessage("Your Expense Is To High Control Your Self");
+    errorMessage("Your Expense Is To High Control Your Self", balance);
   }
 }
 
@@ -80,9 +86,8 @@ function getDisplayOutput(id, returnValue) {
 
 // ERROR HANDLING
 
-function errorMessage(text) {
+function errorMessage(text, id) {
   const err = document.getElementById("error");
   err.style.display = "block";
-  err.classList.remove = "hidden";
-  err.innerText = text;
+  err.innerText = text + id;
 }
