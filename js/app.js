@@ -4,6 +4,7 @@ document
   .addEventListener("click", function () {
     const err = (document.getElementById("error").style.display = "none");
     calculateBalance();
+    getInputValue("food-input-box");
     getInputValue("homeRent-input-box");
     getInputValue("pocketMoney-input-box");
     getInputValue("income-input-box");
